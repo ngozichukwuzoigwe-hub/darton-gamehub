@@ -1,2 +1,3 @@
-## ADA Dart Classes Resources
-This repository will contain all lesson content and resources and student's code contributions in dart.
+## DARTON GAME-HUB
+This repository contains all the code contributions in dart for our first collaborative project for Darton.
+It will contain codes for Hang Man and TicTacToe; as well as the welcome screen.
