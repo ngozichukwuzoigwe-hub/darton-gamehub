@@ -1,12 +1,14 @@
 import 'dart:io';
 import 'dart:core';
+import 'main.dart';
+import 'hangman.dart';
 
 bool winner = false;
 bool isXturn = true;
 int moveCount = 0;
 List<String> values = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 List<String> combinations = ['012', '048', '036', '147', '246', '258', '345', '678'];
-void main() {
+void mainTic() {
   generateBoard();
   startGame();
 }
@@ -46,6 +48,7 @@ void checkWinner({required String player, required String check}) {
     if (combinationValidity == true) {
       print('$player WON!');
       winner = true;
+      menu();
       break;
     }
   }

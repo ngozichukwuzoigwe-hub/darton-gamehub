@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:math';
-
-void main() {
+import 'main.dart';
+import 'tictactoe.dart';
+void mainHangman() {
   /// Pick a random word
   String word = randomWord();
   gameIntro();
@@ -34,6 +35,7 @@ void hangman(String word) {
     Any other incorrect case, demand a single letter */
     if (choice == word) {
       print("\nAwesome, you guessed the word! Attempts: $count");
+      menu();
       break;
     } else if (choice == "EXIT") {
       print("\nBye! See you next time\n");
@@ -58,6 +60,7 @@ void hangman(String word) {
     // End the game if there are no more guesses
     if (clue.join("") == word) {
       print("\nAwesome, you guessed the word! Attempts: $count\n");
+      menu();
       break;
     }
   }

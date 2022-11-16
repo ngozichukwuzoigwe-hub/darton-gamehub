@@ -40,5 +40,18 @@ print('What is your occupation?');
 print('Welcome $name you are $age and your Occupation is $occupation');
 }
 
-
-
+void menu(){
+  print('Nice try!\n \n 1️⃣ Main menu \n 2️⃣ Play Hangman \n 3️⃣ Play tic-tac-toe \n 4️⃣ Exit the game');
+  int menuInput = int.parse(stdin.readLineSync()!);
+  if(menuInput == 1){
+    main();
+  }else if(menuInput == 2){
+    mainHangman();
+  }else if(menuInput == 3 ){
+    mainTic();
+  }else if(menuInput == 4){
+    print('Thanks for playing see you next time. ctrl+c to quit');
+  }else{
+    print('oops! wrong input. Kindly reload');
+  }
+}
