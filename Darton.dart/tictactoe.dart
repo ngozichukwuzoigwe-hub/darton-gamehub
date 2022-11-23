@@ -7,7 +7,16 @@ bool winner = false;
 bool isXturn = true;
 int moveCount = 0;
 List<String> values = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-List<String> combinations = ['012', '048', '036', '147', '246', '258', '345', '678'];
+List<String> combinations = [
+  '012',
+  '048',
+  '036',
+  '147',
+  '246',
+  '258',
+  '345',
+  '678'
+];
 void mainTic() {
   generateBoard();
   startGame();
@@ -15,15 +24,13 @@ void mainTic() {
 
 void startGame() {
   print('Hello Player 1, please enter your name');
-   String firstplayer = stdin.readLineSync()!;
+  String firstplayer = stdin.readLineSync()!;
 
   print('Hello player 2, please enter your name');
-   String secondplayer = stdin.readLineSync()!;
+  String secondplayer = stdin.readLineSync()!;
 
   getnextCharacter(firstplayer, secondplayer);
 }
-
-
 
 //check if a combination is true or false for a player (X or 0)
 bool checkCombination(String combination, String checkFor) {
@@ -42,6 +49,7 @@ bool checkCombination(String combination, String checkFor) {
   }
   return match;
 }
+
 void checkWinner({required String player, required String check}) {
   for (final item in combinations) {
     bool combinationValidity = checkCombination(item, check);
@@ -58,6 +66,10 @@ void getnextCharacter(String firstplayer, String secondplayer) {
   //get input from players
   print('Choose Number for ${isXturn == true ? firstplayer : secondplayer}');
   int number = int.parse(stdin.readLineSync()!);
+  if (number != values) {
+    print('sorry, you have typed a wrong input please try again');
+    menu();
+  }
   //change the value of selected number in values
   values[number - 1] = isXturn ? 'X' : '0';
   //change player turn
@@ -77,13 +89,14 @@ void getnextCharacter(String firstplayer, String secondplayer) {
   //Check Validity for players, declare winner
   //
   //check validity for player X
-  checkWinner( player: firstplayer, check: 'X');
+  checkWinner(player: firstplayer, check: 'X');
   //check validity for player 0
-  checkWinner( player: secondplayer, check: '0');
+  checkWinner(player: secondplayer, check: '0');
 
   //until we have a winner, we call current function again
   if (winner == false) getnextCharacter(firstplayer, secondplayer);
 }
+
 //clear console screen
 void clearScreen() {
   if (Platform.isWindows) {
@@ -92,6 +105,7 @@ void clearScreen() {
     print(Process.runSync("clear", [], runInShell: true).stdout);
   }
 }
+
 //show current state of board
 void generateBoard() {
   print('   |   |   ');
